@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:backgroundTint="@color/colorOnSecondary"
+    android:backgroundTintMode="screen"
+    tools:context=".ui.home.DetalleRestauranteFragment"
+    tools:layout_editor_absoluteX="-16dp"
+    tools:layout_editor_absoluteY="-63dp">
+
+    <ImageView
+        android:id="@+id/LogoRestaurante"
+        android:layout_width="413dp"
+        android:layout_height="223dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/picturestock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DireccionRestaurante" />
+
+    <TextView
+        android:id="@+id/rubro"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="monospace"
+        android:text="Rubro"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnBackground"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LogoRestaurante" />
+
+    <TextView
+        android:id="@+id/TelefonoRestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="monospace"
+        android:text="Telefono"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnBackground"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rubro" />
+
+    <TextView
+        android:id="@+id/EmailRestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="monospace"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TelefonoRestaurante" />
+
+    <TextView
+        android:id="@+id/NombreRestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="monospace"
+        android:text="Nombre del Restaurante"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnBackground"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/DireccionRestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:text="Dirección del Restaurante"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnBackground"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NombreRestaurante" />
+
+    <Button
+        android:id="@+id/VerProductos"
+        android:layout_width="337dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="24dp"
+        android:text="Carta Digital"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:shadowColor="@color/colorOnBackground"
+        app:layout_constraintTop_toBottomOf="@+id/EmailRestaurante" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

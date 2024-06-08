@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".LoginActivity">
+
+    <!-- Botón de registro en la esquina superior derecha -->
+    <ImageButton
+        android:id="@+id/btnRegistrar"
+        android:layout_width="59dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:contentDescription="Registrar"
+        android:src="@drawable/registrarse2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Logo de la aplicación -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="325dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/restoapp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
+
+    <!-- Título de la aplicación -->
+    <TextView
+        android:id="@+id/titulo"
+        style="@style/TitleTextStyle"
+        android:layout_width="350dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:text="Bienvenido a RestoApp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <!-- Campo de texto para el email -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        style="@style/EditTextStyle"
+        android:layout_width="356dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintWidth_percent="0.8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/colorTextInputHint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordLayout"
+        style="@style/EditTextStyle"
+        android:layout_width="347dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailLayout"
+        app:layout_constraintWidth_percent="0.8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditPass"
+            android:layout_width="329dp"
+            android:layout_height="55dp"
+            android:hint="Ingrese su contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextInput"
+            android:textColorHint="@color/colorTextInputHint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botón de inicio de sesión -->
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Iniciar Sesión"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordLayout"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Botón de recuperar contraseña -->
+    <Button
+        android:id="@+id/recuperarPass"
+        style="@style/ButtonStyle"
+        android:layout_width="328dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="¿Olvidaste tu contraseña?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Mensaje informativo -->
+    <TextView
+        android:id="@+id/mensaje"
+        style="@style/TextViewStyle"
+        android:layout_width="329dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recuperarPass"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

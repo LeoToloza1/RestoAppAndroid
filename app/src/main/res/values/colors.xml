@@ -1,0 +1,20 @@
+<resources>
+    <!-- Colores existentes -->
+    <color name="colorPrimary">#CD4C06</color>
+    <color name="colorPrimaryVariant">#ffedd5</color>
+    <color name="colorSecondary">#E33508</color>
+    <color name="colorSecondaryVariant">#FF0505</color>
+    <color name="colorOnPrimary">#fc933b</color>
+    <color name="colorOnSecondary">#fa7515</color>
+    <color name="colorBackground">#FFFBFB</color>
+    <color name="colorSurface">#c3420b</color>
+    <color name="colorError">#9b3511</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#5BFFFAF8</color>
+    <color name="colorOnError">#D50000</color>
+    <color name="colorGris">#111212</color>
+
+    <!-- Colores añadidos -->
+    <color name="colorTextInput">#212121</color>
+    <color name="colorTextInputHint">#757575</color>
+</resources>

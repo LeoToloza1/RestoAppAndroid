@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.leotoloza.restoapp.ui.home.HomeFragment"
+        android:label="@string/restaurantes"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_detalleRestaurante"
+            app:destination="@id/detalleRestaurante" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidos_fragment"
+        android:name="com.leotoloza.restoapp.ui.dashboard.DashboardFragment"
+        android:label="@string/pedidos"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/perfil_fragment"
+        android:name="com.leotoloza.restoapp.ui.Perfil.PerfilFragment"
+        android:label="@string/perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/detalleRestaurante"
+        android:name="com.leotoloza.restoapp.ui.home.DetalleRestauranteFragment"
+        android:label="@string/detalle"
+        tools:layout="@layout/fragment_detalle_restaurante" >
+        <action
+            android:id="@+id/action_detalleRestaurante_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_detalleRestaurante_to_productoFragment"
+            app:destination="@id/productoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productoFragment"
+        android:name="com.leotoloza.restoapp.ui.home.ProductoFragment"
+        android:label="@string/fragment_producto"
+        tools:layout="@layout/fragment_producto" >
+        <action
+            android:id="@+id/action_productoFragment_to_detalleRestaurante"
+            app:destination="@id/detalleRestaurante" />
+    </fragment>
+
+</navigation>

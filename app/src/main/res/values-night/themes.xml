@@ -1,0 +1,82 @@
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.RestoApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <!-- Background, surface, and error colors -->
+<!--        <item name="colorBackground">@color/colorBackground</item>-->
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Text input hint color -->
+        <!--        <item name="android:textColorHint">@color/colorTextInputHint</item>-->
+        <!-- Customize your theme here -->
+    </style>
+
+    <!-- Estilo para los botones -->
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:background">@drawable/rounded_button</item>
+    </style>
+
+    <!-- Estilo para los EditText -->
+    <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/colorTextInput</item>
+        <!--        <item name="android:hintTextColor">@color/colorTextInputHint</item>-->
+        <item name="android:background">@drawable/text_input_background</item>
+    </style>
+
+    <!-- Estilo para los TextView -->
+    <style name="TextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <!-- Estilo para el título -->
+    <style name="TitleTextStyle" parent="TextViewStyle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!-- Tema oscuro -->
+    <style name="Theme.RestoApp.Dark" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <!-- Background, surface, and error colors -->
+        <!--        <item name="colorBackground">@color/colorBackground</item>-->
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Text input hint color -->
+        <item name="android:textColorHint">@color/colorTextInputHint</item>
+        <!-- Customize your theme here -->
+    </style>
+</resources>

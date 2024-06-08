@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview_default_radius"
+    android:padding="@dimen/cardview_default_radius"
+    android:backgroundTint="@color/colorOnPrimary"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:contentPadding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/LogoRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/picturestock" />
+
+        <TextView
+            android:id="@+id/rubro"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:fontFamily="monospace"
+            android:text="Rubro"
+            android:textAlignment="center"
+            android:textColor="@color/colorOnBackground"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/NombreRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:fontFamily="monospace"
+            android:text="Nombre del Restaurante"
+            android:textAlignment="center"
+            android:textColor="@color/colorOnBackground"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/DireccionRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:textAlignment="center"
+            android:fontFamily="monospace"
+            android:textColor="@color/colorOnBackground"
+            android:text="Dirección del Restaurante"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
