@@ -9,8 +9,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.leotoloza.restoapp.Models.Producto;
+import com.leotoloza.restoapp.Models.ProductoDTO;
 import com.leotoloza.restoapp.Models.Restaurante;
 import com.leotoloza.restoapp.Servicios.Dialogo;
+import com.leotoloza.restoapp.Servicios.ToastPesonalizado;
 import com.leotoloza.restoapp.request.ApiClient;
 
 import java.util.List;
@@ -21,10 +23,13 @@ import retrofit2.Response;
 
 public class ProductoViewModel extends AndroidViewModel {
     private MutableLiveData<List<Producto>> listMutableLiveData;
+    private MutableLiveData<List<ProductoDTO>> listMutableLiveData2;
 
     public ProductoViewModel(@NonNull Application application) {
         super(application);
     }
+
+
 
     public MutableLiveData<List<Producto>> getListMutableLiveData() {
         if (listMutableLiveData == null) listMutableLiveData = new MutableLiveData<>();
@@ -38,11 +43,14 @@ public class ProductoViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
                 if (response.isSuccessful()) {
-                    listMutableLiveData.setValue(response.body());
-                    Log.d("salida", "onResponse: "+response.body().get(0).getNombre_producto());
+                    List<Producto> listaProductos = response.body();
+                    if (listaProductos.isEmpty()) {
+                        ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "No hay productos cargados todavia");
+                    } else {
+                        listMutableLiveData.setValue(listaProductos);
+                    }
                 }
             }
-
             @Override
             public void onFailure(Call<List<Producto>> call, Throwable t) {
                 Dialogo.mostrarDialogoInformativo(getApplication().getApplicationContext(), "Error", "Ocurrio un error: " + t.getMessage());

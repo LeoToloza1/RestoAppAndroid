@@ -18,38 +18,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaProductos"
-        android:layout_width="406dp"
-        android:layout_height="450dp"
+        android:layout_width="403dp"
+        android:layout_height="468dp"
         android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchViewProd" />
 
-    <TextView
-        android:id="@+id/tituloProductosSeleccionados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:padding="8dp"
-        android:text="Vista previa del pedido"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/listaProductos"
-        tools:layout_editor_absoluteX="1dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listaProductosSeleccionados"
-        android:layout_width="411dp"
-        android:layout_height="121dp"
-        android:layout_marginTop="8dp"
+    <Button
+        android:id="@+id/btnVistaPrevia"
+        android:layout_width="272dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/ver_pedido"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloProductosSeleccionados" />
+        app:layout_constraintTop_toBottomOf="@+id/listaProductos" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

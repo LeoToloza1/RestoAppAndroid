@@ -3,6 +3,9 @@ package com.leotoloza.restoapp.request;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.leotoloza.restoapp.Models.Cliente;
+import com.leotoloza.restoapp.Models.Envio;
+import com.leotoloza.restoapp.Models.Pedido;
+import com.leotoloza.restoapp.Models.PedidoDTO;
 import com.leotoloza.restoapp.Models.Producto;
 import com.leotoloza.restoapp.Models.Restaurante;
 
@@ -73,24 +76,34 @@ public class ApiClient {
 
         @GET("Cliente")
         Call<Cliente> verPerfil(@Header("Authorization") String token);
+
         @Multipart
         @POST("cliente/editar")
         Call<Cliente> editarPerfil(@Header("Authorization") String token,
-                                   @Part("nombre_cliente") RequestBody nombreCliente,
-                                   @Part("apellido_cliente") RequestBody apellidoCliente,
-                                   @Part("email_cliente") RequestBody emailCliente,
-                                   @Part("direccion_cliente") RequestBody direccionCliente,
-                                   @Part("telefono_cliente") RequestBody telefonoCliente,
+                                   @Part("Nombre_cliente") RequestBody nombreCliente,
+                                   @Part("Apellido_cliente") RequestBody apellidoCliente,
+                                   @Part("Email_cliente") RequestBody emailCliente,
+                                   @Part("Direccion_cliente") RequestBody direccionCliente,
+                                   @Part("Telefono_cliente") RequestBody telefonoCliente,
                                    @Part MultipartBody.Part avatarFile);
 
-        @POST("cliente/password")
         @FormUrlEncoded
-        Call<Cliente> editarPerfil(String token,@Field("password") String pass);
+        @POST("cliente/password")
+        Call<String> cambiarPassword(@Header("Authorization") String token, @Field("pass") String pass);
 
-//        @GET("api/pago/{id}")
-//        Call<List<Pago>> pagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
-//        @POST("api/recovery")
-//        @FormUrlEncoded
+        @GET("Pedido/crear")
+        Call<Pedido> crearPedido(@Header("Authorization") String token, @Body PedidoDTO pedidoDTO);
+
+        @POST("Envio/crear/{id}")
+        Call<Envio> crearEnvio(@Header("Authorization") String token, @Path("id") int id);
+
+
+        @GET("Pedido/cliente")
+        Call<List<PedidoDTO>> verPedidos(@Header("Authorization") String token);
+
+        @POST("Pedido/crear")
+        Call<Pedido> confirmarPedido(@Header("Authorization") String token, @Body PedidoDTO pedidoDto);
+
 //        Call<String> enviarMail(@Field("email") String email);
 //        @PATCH("api/Propietario/actualizar/pass")
 //        @FormUrlEncoded

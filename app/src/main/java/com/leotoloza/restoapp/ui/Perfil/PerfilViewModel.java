@@ -16,9 +16,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.leotoloza.restoapp.Login.Login;
 import com.leotoloza.restoapp.Models.Cliente;
 import com.leotoloza.restoapp.Servicios.Dialogo;
 import com.leotoloza.restoapp.Servicios.RealPathUtil;
+import com.leotoloza.restoapp.Servicios.ToastPesonalizado;
 import com.leotoloza.restoapp.request.ApiClient;
 
 import java.io.File;
@@ -35,11 +37,19 @@ public class PerfilViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> camposEditablesLiveData;
     private MutableLiveData<String> textoBotonLiveData;
     private MutableLiveData<Uri> uriMutableLiveData;
+    private MutableLiveData<String> password;
     private boolean editable;
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
         editable = false;
+    }
+
+    public MutableLiveData<String> getPassword() {
+       if (password == null) {
+           password = new MutableLiveData<>();
+       }
+        return password;
     }
 
     public MutableLiveData<Uri> getUriMutableLiveData() {
@@ -79,12 +89,14 @@ public class PerfilViewModel extends AndroidViewModel {
     public void cambiarTextoBoton(String nombre, String apellido, String email, String direccion, String telefono) {
         if (editable) {
             textoBotonLiveData.setValue("Guardar");
-            if(textoBotonLiveData.getValue().equals("Guardar")) onGuardarClick(nombre, apellido, email, direccion, telefono);
+            comprobarBoton(nombre, apellido, email, direccion, telefono);
         } else {
             textoBotonLiveData.setValue("Editar");
         }
     }
-
+private void comprobarBoton(String nombre, String apellido, String email, String direccion, String telefono){
+    if(textoBotonLiveData.getValue().equals("Guardar")) onGuardarClick(nombre, apellido, email, direccion, telefono);
+}
     public MutableLiveData<Cliente> getClienteMutableLiveData() {
         if (clienteMutableLiveData == null) clienteMutableLiveData = new MutableLiveData<>();
         return clienteMutableLiveData;
@@ -101,7 +113,6 @@ public class PerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                 if (response.isSuccessful()) {
                     clienteMutableLiveData.setValue(response.body());
-                    Log.d("salida", "onResponse: " + response.body().getNombre_cliente());
                 }
             }
 
@@ -112,14 +123,20 @@ public class PerfilViewModel extends AndroidViewModel {
         });
     }
 
-    public boolean compararPass(String pass, String passConfirm) {
-        return pass.equals(passConfirm);
-    }
-
     public void onGuardarClick(String nombre, String apellido, String email, String direccion, String telefono) {
-            Cliente cliente = crearCliente(nombre, apellido, email, direccion, telefono);
+        Cliente cliente = crearCliente(nombre, apellido, email, direccion, telefono);
+        SharedPreferences sp = getApplication().getSharedPreferences("datosUsuario", Context.MODE_PRIVATE);
+        String emailLogueado = sp.getString("emailCliente", "");
+        if (!email.equals(emailLogueado)) {
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("emailCliente", email);
+            editor.apply();
+            ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "Email cambiado, por favor inicie sesión nuevamente.");
+            cerrarSesion();
+        } else {
             Uri uriImage = uriMutableLiveData.getValue();
             editarPerfil(cliente, uriImage);
+        }
     }
 
     private Cliente crearCliente(String nombre, String apellido, String email, String direccion, String telefono) {
@@ -136,7 +153,6 @@ public class PerfilViewModel extends AndroidViewModel {
         SharedPreferences sp = getApplication().getSharedPreferences("tokenRestoApp", 0);
         String token = sp.getString("tokenAcceso", "");
         token = "Bearer " + token;
-
         RequestBody nombreCliente = RequestBody.create(MediaType.parse("multipart/form-data"), cliente.getNombre_cliente());
         RequestBody apellidoCliente = RequestBody.create(MediaType.parse("multipart/form-data"), cliente.getApellido_cliente());
         RequestBody emailCliente = RequestBody.create(MediaType.parse("multipart/form-data"), cliente.getEmail_cliente());
@@ -158,7 +174,7 @@ public class PerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                 if (response.isSuccessful()) {
                     clienteMutableLiveData.setValue(response.body());
-                    Log.d("salida", "onResponse: " + response.body().getNombre_cliente());
+                  ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "Cambio Exitoso");
                 }
             }
 
@@ -168,5 +184,49 @@ public class PerfilViewModel extends AndroidViewModel {
             }
         });
     }
+    public void cambiarPassword(String pass){
+        SharedPreferences sp = getApplication().getSharedPreferences("tokenRestoApp", 0);
+        String token = sp.getString("tokenAcceso", "");
+        token = "Bearer " + token;
 
+        ApiClient.RestoApp endpoint = ApiClient.getRestoApp();
+        Call<String> call = endpoint.cambiarPassword(token, pass);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    password.setValue(response.body());
+
+                    ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "Cambio Exitoso");
+                    ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "Inicie sesion nuevamente");
+                    cerrarSesion();
+                }else{
+                    ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(),"Ocurrio un error: " + response.message());
+                }
+
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Dialogo.mostrarDialogoInformativo(getApplication().getApplicationContext(), "Error", "Ocurrió un error: " + t.getMessage());
+            }
+        });
+    }
+
+
+
+    public void cerrarSesion() {
+        SharedPreferences sp = getApplication().getSharedPreferences("tokenRestoApp", Context.MODE_PRIVATE);
+        SharedPreferences sp2 = getApplication().getSharedPreferences("datosUsuario", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor2 = sp2.edit();
+        editor2.remove("emailCliente");
+        editor2.remove("passwordCliente");
+        editor2.apply();
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("tokenAcceso");
+        editor.apply();
+        Intent intent = new Intent(getApplication(), Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        getApplication().startActivity(intent);
+    }
 }

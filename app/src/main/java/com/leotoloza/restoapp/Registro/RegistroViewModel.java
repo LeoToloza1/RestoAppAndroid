@@ -5,6 +5,7 @@ import static android.app.Activity.RESULT_OK;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 
@@ -14,6 +15,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.leotoloza.restoapp.Login.Login;
 import com.leotoloza.restoapp.Models.Cliente;
 import com.leotoloza.restoapp.Servicios.Dialogo;
 import com.leotoloza.restoapp.Servicios.RealPathUtil;
@@ -122,4 +124,9 @@ public class RegistroViewModel extends AndroidViewModel {
             }
         });
     }
+
+
+
+
+
 }

@@ -88,4 +88,17 @@ public class Restaurante implements Serializable {
     public void setRubro(Rubro rubro) {
         this.rubro = rubro;
     }
+
+    @Override
+    public String toString() {
+        return "Restaurante{" +
+                "id=" + id +
+                ", nombre_restaurante='" + nombre_restaurante + '\'' +
+                ", direccion_restaurante='" + direccion_restaurante + '\'' +
+                ", email_restaurante='" + email_restaurante + '\'' +
+                ", telefono_restaurante='" + telefono_restaurante + '\'' +
+                ", id_rubro=" + id_rubro +
+                ", logo_url='" + logo_url + '\'' +
+                '}';
+    }
 }

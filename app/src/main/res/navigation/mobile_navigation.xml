@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/pedidos_fragment"
-        android:name="com.leotoloza.restoapp.ui.dashboard.DashboardFragment"
+        android:name="com.leotoloza.restoapp.ui.Pedido.PedidoFragment"
         android:label="@string/pedidos"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_pedido" />
 
     <fragment
         android:id="@+id/perfil_fragment"
@@ -47,6 +47,18 @@
         <action
             android:id="@+id/action_productoFragment_to_detalleRestaurante"
             app:destination="@id/detalleRestaurante" />
+        <action
+            android:id="@+id/action_productoFragment_to_vistaPreviaFragment"
+            app:destination="@id/vistaPreviaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vistaPreviaFragment"
+        android:name="com.leotoloza.restoapp.ui.Pedido.VistaPreviaFragment"
+        android:label="@string/vista_previa"
+        tools:layout="@layout/fragment_vista_previa" >
+        <action
+            android:id="@+id/action_vistaPreviaFragment_to_productoFragment"
+            app:destination="@id/productoFragment" />
     </fragment>
 
 </navigation>

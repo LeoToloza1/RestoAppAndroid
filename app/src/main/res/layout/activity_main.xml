@@ -4,12 +4,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     android:paddingTop="?attr/actionBarSize">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="#00B5B4B4"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
@@ -17,10 +19,12 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/colorOnPrimary"
+        app:itemTextColor="@color/colorOnBackground"
+        app:itemActiveIndicatorStyle="@color/colorBackground"
+        app:itemIconTint="@color/colorOnBackground"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />

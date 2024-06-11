@@ -36,8 +36,8 @@ public class Login extends AppCompatActivity {
         String email = sp.getString("emailCliente", "");
         String password = sp.getString("passwordCliente", "");
 
-        loginViewModel= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
-        biometricaViewModel =ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(BiometricaViewModel.class);
+        loginViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
+        biometricaViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(BiometricaViewModel.class);
         loginViewModel.getMensajeError().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -54,40 +54,29 @@ public class Login extends AppCompatActivity {
                 loginViewModel.login(email, pass);
             }
         });
-binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(Login.this, Registro.class);
-        startActivity(intent);
-    }
-});
-biometricaViewModel.getAutenticadoConHuella().observe(this, new Observer<Boolean>() {
-    @Override
-    public void onChanged(Boolean aBoolean) {
-        if (aBoolean) {
-            Intent intent = new Intent(Login.this, MainActivity.class);
-            startActivity(intent);
-        }
-    }
-});
-biometricaViewModel.getBiometricoSoportado().observe(this, new Observer<Boolean>() {
-    @Override
-    public void onChanged(Boolean aBoolean) {
+        binding.btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Registro.class);
+                startActivity(intent);
+            }
+        });
+        biometricaViewModel.getBiometricoSoportado().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
 
-    }
-});
-
-biometricaViewModel.getMensajeAutenticacion().observe(this, new Observer<String>() {
-    @Override
-    public void onChanged(String s) {
-        binding.mensaje.setText(s);
-    }
-});
-biometricaViewModel.inicializarBiometria(Login.this);
+            }
+        });
+        biometricaViewModel.getMensajeAutenticacion().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.mensaje.setText(s);
+            }
+        });
+        biometricaViewModel.inicializarBiometria(Login.this);
         biometricaViewModel.getAutenticadoConHuella().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean autenticado) {
-                loginViewModel.login(email, password);
             }
         });
     }

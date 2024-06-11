@@ -26,4 +26,12 @@ private String nombre_rubro;
     public void setNombre_rubro(String nombre_rubro) {
         this.nombre_rubro = nombre_rubro;
     }
+
+    @Override
+    public String toString() {
+        return "Rubro{" +
+                "id=" + id +
+                ", nombre_rubro='" + nombre_rubro + '\'' +
+                '}';
+    }
 }

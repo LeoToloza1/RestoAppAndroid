@@ -48,25 +48,29 @@ public class LoginViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
-                    guardarDatosUsuario(email, password);
-                    String token=  response.body();
-
-                    guardarToken(token);
-                    establecerAutenticacionPrevia(true);
-                    Intent intent = new Intent(contexto, MainActivity.class);
-                    intent.putExtra("token", token);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    contexto.startActivity(intent);
+                    String token = response.body();
+                    if (token != null && !token.isEmpty()) {
+                        guardarDatosUsuario(email, password);
+                        guardarToken(token);
+                        establecerAutenticacionPrevia(true);
+                        Intent intent = new Intent(contexto, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        contexto.startActivity(intent);
+                    } else {
+                        mensajeError.setValue("Token inválido recibido.");
+                    }
+                } else if (response.code() == 404) {
+                    mensajeError.setValue("Verifique sus credenciales.");
                 } else {
-                    mensajeError.setValue(response.message());
-                    Log.d("salida", "onResponse: "+response.message());
+                    mensajeError.setValue("Error de autenticación: " + response.message());
+                    Log.d("salida", "onResponse: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
-                mensajeError.setValue(t.getMessage());
-                Log.d("salida", "onResponse: "+t.getMessage());
+                mensajeError.setValue("Error de red: " + t.getMessage());
+                Log.d("salida", "onFailure: " + t.getMessage());
             }
         });
     }
@@ -75,7 +79,6 @@ public class LoginViewModel extends AndroidViewModel {
         SharedPreferences sp = contexto.getSharedPreferences("tokenRestoApp", 0);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("tokenAcceso",token);
-        Log.d("Salida", "guardarToken: "+token);
         editor.commit();
     }
 

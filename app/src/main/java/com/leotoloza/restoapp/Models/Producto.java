@@ -70,4 +70,15 @@ public class Producto implements Serializable {
     public void setRestaurante(Restaurante restaurante) {
         this.restaurante = restaurante;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre_producto='" + nombre_producto + '\'' +
+                ", precio=" + precio +
+                ", descripcion='" + descripcion + '\'' +
+                ", restaurante_id=" + restaurante_id +
+                '}';
+    }
 }

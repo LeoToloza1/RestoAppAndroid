@@ -10,4 +10,6 @@
     <string name="detalle">Detalle</string>
     <string name="buscar_productos">Buscar Productos</string>
     <string name="fragment_producto">Carta Digital</string>
+    <string name="ver_pedido">Ver Pedido</string>
+    <string name="vista_previa">Vista Previa del Pedido</string>
 </resources>

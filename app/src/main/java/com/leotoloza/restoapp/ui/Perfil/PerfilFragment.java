@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class PerfilFragment extends Fragment {
             public void onChanged(Boolean aBoolean) {
                 binding.etNombre.setEnabled(aBoolean);
                 binding.etApellido.setEnabled(aBoolean);
-//                binding.etEmail.setEnabled(aBoolean);
+               binding.etEmail.setEnabled(aBoolean);
                 binding.etDireccion.setEnabled(aBoolean);
                 binding.etTelefono.setEnabled(aBoolean);
                 binding.ivFoto.setEnabled(aBoolean);
@@ -70,17 +71,21 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-
-        String nombre = binding.etNombre.getText().toString();
-        String apellido = binding.etApellido.getText().toString();
-        String email = binding.etEmail.getText().toString();
-        String direccion = binding.etDireccion.getText().toString();
-        String telefono = binding.etTelefono.getText().toString();
+        perfilViewModel.getPassword().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+            }
+        });
         binding.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfilViewModel.cambiarTextoBoton(nombre, apellido, email, direccion, telefono);
                 perfilViewModel.habilitarCampos();
+                String nombre = binding.etNombre.getText().toString();
+                String apellido = binding.etApellido.getText().toString();
+                String email = binding.etEmail.getText().toString();
+                String direccion = binding.etDireccion.getText().toString();
+                String telefono = binding.etTelefono.getText().toString();
+                perfilViewModel.cambiarTextoBoton(nombre, apellido, email, direccion, telefono);
 
             }
         });
@@ -110,9 +115,8 @@ public class PerfilFragment extends Fragment {
                 Dialogo.mostrarDialogoConEntrada(getContext(), "Cambiar contraseña", new Dialogo.CambioContraseñaListener() {
                     @Override
                     public void onAceptar(String nuevaContraseña) {
-                        ToastPesonalizado.mostrarMensaje(getContext(), "Inicie sesion nuevamente");
-//                        perfilViewModel.cambiarPassword(nuevaContraseña);
-                        System.exit(0);
+                        perfilViewModel.cambiarPassword(nuevaContraseña);
+
                     }
                 });
             }

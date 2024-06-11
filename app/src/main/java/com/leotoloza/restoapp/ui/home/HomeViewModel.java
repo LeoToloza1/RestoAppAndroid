@@ -39,9 +39,9 @@ public class HomeViewModel extends AndroidViewModel {
             public void onResponse(Call<List<Restaurante>> call, Response<List<Restaurante>> response) {
                 if (response.isSuccessful()) {
                     listMutableLiveData.setValue(response.body());
-                    Log.d("salida", "onResponse: " + response.body().get(0).getNombre_restaurante());
+//                    Log.d("salida", "onResponse: " + response.body().get(0).getNombre_restaurante());
                 } else {
-                    Log.d("salida", "onResponse: " + response.message());
+//                    Log.d("salida", "onResponse: " + response.message());
                 }
             }
 
