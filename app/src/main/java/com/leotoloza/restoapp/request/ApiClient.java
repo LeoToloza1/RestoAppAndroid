@@ -104,9 +104,8 @@ public class ApiClient {
         @POST("Pedido/crear")
         Call<Pedido> confirmarPedido(@Header("Authorization") String token, @Body PedidoDTO pedidoDto);
 
-//        Call<String> enviarMail(@Field("email") String email);
-//        @PATCH("api/Propietario/actualizar/pass")
-//        @FormUrlEncoded
-//        Call<String> cambiarPass(@Header("Authorization")String token, @Field("pass") String pass);
+        @POST("Envio/crear/{id}")
+        Call<Envio> solicitarEnvio(@Path("id") int id);
+
     }
 }

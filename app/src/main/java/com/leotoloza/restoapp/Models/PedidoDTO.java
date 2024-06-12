@@ -1,14 +1,16 @@
 package com.leotoloza.restoapp.Models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 public class PedidoDTO implements Serializable {
 
     private int id;
-    private String Detalle;
-    private List<ProductoDTO> Productos;
+    private String detalle;
+    private ClienteDTO clienteDTO;
+    private double total;
+    private String fechaPedido;
+    private List<ProductoDTO> productos;
 
     public PedidoDTO() {
     }
@@ -22,18 +24,54 @@ public class PedidoDTO implements Serializable {
     }
 
     public String getDetalle() {
-        return Detalle;
+        return detalle;
     }
 
     public void setDetalle(String detalle) {
-        Detalle = detalle;
+        this.detalle = detalle;
+    }
+
+    public ClienteDTO getClienteDTO() {
+        return clienteDTO;
+    }
+
+    public void setClienteDTO(ClienteDTO clienteDTO) {
+        this.clienteDTO = clienteDTO;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public String getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(String fechaPedido) {
+        this.fechaPedido = fechaPedido;
     }
 
     public List<ProductoDTO> getProductos() {
-        return Productos;
+        return productos;
     }
 
     public void setProductos(List<ProductoDTO> productos) {
-        Productos = productos;
+        this.productos = productos;
+    }
+
+    @Override
+    public String toString() {
+        return "PedidoDTO{" +
+                "id=" + id +
+                ", Detalle='" + detalle + '\'' +
+                ", cliente=" + clienteDTO +
+                ", total=" + total +
+                ", fecha_pedido='" + fechaPedido + '\'' +
+                ", productos=" + productos +
+                '}';
     }
 }

@@ -12,4 +12,6 @@
     <string name="fragment_producto">Carta Digital</string>
     <string name="ver_pedido">Ver Pedido</string>
     <string name="vista_previa">Vista Previa del Pedido</string>
+    <string name="detalle_pedido">Detalle y Envio</string>
+    <string name="solicitar_envio">Solicitar Envio</string>
 </resources>

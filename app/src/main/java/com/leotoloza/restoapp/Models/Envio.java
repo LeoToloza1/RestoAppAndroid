@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Envio implements Serializable {
     private int id;
-    private LocalDate fecha;
+    private String fecha;
     private double costo;
     private int id_repartidor;
     private Repartidor repartidor;
@@ -24,11 +24,11 @@ public class Envio implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -78,5 +78,19 @@ public class Envio implements Serializable {
 
     public void setEstado_envio(boolean estado_envio) {
         this.estado_envio = estado_envio;
+    }
+
+    @Override
+    public String toString() {
+        return "Envio{" +
+                "id=" + id +
+                ", fecha=" + fecha +
+                ", costo=" + costo +
+                ", id_repartidor=" + id_repartidor +
+                ", repartidor=" + repartidor +
+                ", pedido=" + pedido +
+                ", id_pedido=" + id_pedido +
+                ", estado_envio=" + estado_envio +
+                '}';
     }
 }

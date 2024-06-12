@@ -19,7 +19,8 @@
         android:id="@+id/pedidos_fragment"
         android:name="com.leotoloza.restoapp.ui.Pedido.PedidoFragment"
         android:label="@string/pedidos"
-        tools:layout="@layout/fragment_pedido" />
+        tools:layout="@layout/fragment_pedido" >
+    </fragment>
 
     <fragment
         android:id="@+id/perfil_fragment"
@@ -60,5 +61,6 @@
             android:id="@+id/action_vistaPreviaFragment_to_productoFragment"
             app:destination="@id/productoFragment" />
     </fragment>
+
 
 </navigation>

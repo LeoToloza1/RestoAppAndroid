@@ -59,4 +59,16 @@ public class Repartidor implements Serializable {
     public void setTelefono_repartidor(String telefono_repartidor) {
         this.telefono_repartidor = telefono_repartidor;
     }
+
+    @Override
+    public String toString() {
+        return "Repartidor{" +
+                "id=" + id +
+                ", nombre_repartidor='" + nombre_repartidor + '\'' +
+                ", apellido_repartidor='" + apellido_repartidor + '\'' +
+                ", email_repartidor='" + email_repartidor + '\'' +
+                ", direccion_repartidor='" + direccion_repartidor + '\'' +
+                ", telefono_repartidor='" + telefono_repartidor + '\'' +
+                '}';
+    }
 }

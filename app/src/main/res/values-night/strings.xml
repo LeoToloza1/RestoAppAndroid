@@ -7,4 +7,6 @@
     <string name="buscar_productos">Buscar Productos</string>
     <string name="fragment_producto">Carta Digital</string>
     <string name="ver_pedido">Ver Pedido</string>
+    <string name="detalle_pedido">Detalle y Envio</string>
+    <string name="solicitar_envio">Solicitar Envio</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.leotoloza.restoapp.ui.Pedido;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,6 +26,7 @@ import com.leotoloza.restoapp.Models.Producto;
 import com.leotoloza.restoapp.Models.ProductoDTO;
 import com.leotoloza.restoapp.R;
 import com.leotoloza.restoapp.Servicios.ToastPesonalizado;
+import com.leotoloza.restoapp.databinding.FragmentPedidoBinding;
 import com.leotoloza.restoapp.databinding.FragmentVistaPreviaBinding;
 
 import java.util.List;
@@ -75,15 +78,14 @@ public class VistaPreviaFragment extends Fragment {
             public void onChanged(Pedido pedido) {
             }
         });
+
         binding.btnConfirmarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PedidoDTO pedido = new PedidoDTO();
                 pedido.setProductos(mViewModel.getMutableLiveDataDTO().getValue());
                 pedido.setDetalle(binding.detalle.getText().toString());
-            mViewModel.confirmarPedido(pedido);
-//            Intent intent = new Intent(getContext(), MainActivity.class);
-//            startActivity(intent);
+                mViewModel.confirmarPedido(pedido);
             }
         });
         mViewModel.recuperarProductos(getArguments());

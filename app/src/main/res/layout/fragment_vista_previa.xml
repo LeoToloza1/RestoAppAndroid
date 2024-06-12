@@ -9,11 +9,10 @@
 
     <TextView
         android:id="@+id/tvPedidoTitulo"
-        android:layout_width="327dp"
-        android:layout_height="61dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:paddingBottom="16dp"
         android:text="Vista Previa del Pedido"
         android:textSize="24sp"
@@ -24,35 +23,34 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductos"
-        android:layout_width="411dp"
-        android:layout_height="402dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="4dp"
-        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPedidoTitulo" />
-
-    <Button
-        android:id="@+id/btnConfirmarPedido"
-        android:layout_width="397dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="40dp"
-        android:text="Confirmar Pedido"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPedidoTitulo"
+        app:layout_constraintBottom_toTopOf="@+id/detalle" />
 
     <EditText
         android:id="@+id/detalle"
-        android:layout_width="399dp"
-        android:layout_height="121dp"
+        android:layout_width="417dp"
+        android:layout_height="176dp"
         android:ems="10"
         android:hint="Ingrese algun detalle relevante para el pedido"
-        android:inputType="text"
+        android:inputType="text|textLongMessage"
         app:layout_constraintBottom_toTopOf="@+id/btnConfirmarPedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvProductos" />
+
+    <Button
+        android:id="@+id/btnConfirmarPedido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:text="Confirmar Pedido"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

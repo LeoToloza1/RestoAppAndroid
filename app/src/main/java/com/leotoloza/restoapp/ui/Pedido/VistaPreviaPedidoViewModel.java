@@ -2,18 +2,23 @@ package com.leotoloza.restoapp.ui.Pedido;
 
 import android.app.Application;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
 import com.leotoloza.restoapp.Models.Pedido;
 import com.leotoloza.restoapp.Models.PedidoDTO;
 import com.leotoloza.restoapp.Models.Producto;
 import com.leotoloza.restoapp.Models.ProductoDTO;
+import com.leotoloza.restoapp.R;
 import com.leotoloza.restoapp.Servicios.Dialogo;
 import com.leotoloza.restoapp.Servicios.ToastPesonalizado;
 import com.leotoloza.restoapp.request.ApiClient;
@@ -104,6 +109,7 @@ public class VistaPreviaPedidoViewModel extends AndroidViewModel {
 
 
     public void confirmarPedido(PedidoDTO pedidoDTO) {
+        Log.d("salida", "confirmarPedido: "+pedidoDTO.toString());
         SharedPreferences sp = getApplication().getSharedPreferences("tokenRestoApp", 0);
         String token = sp.getString("tokenAcceso", "");
         token = "Bearer " + token;
@@ -115,6 +121,7 @@ public class VistaPreviaPedidoViewModel extends AndroidViewModel {
                 if (response.isSuccessful()) {
                     mutablePedido.setValue(response.body());
                     ToastPesonalizado.mostrarMensaje(getApplication().getApplicationContext(), "Se confirmo el pedido");
+
                 } else {
                     mensajeMutableLiveData.setValue("Error al confirmar el pedido: " + response.message());
                     Log.d("salida", "onResponse: "+response.message());

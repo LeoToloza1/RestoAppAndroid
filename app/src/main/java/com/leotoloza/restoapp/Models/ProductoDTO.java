@@ -3,63 +3,63 @@ package com.leotoloza.restoapp.Models;
 import java.io.Serializable;
 
 public class ProductoDTO implements Serializable {
-    private int ProductoId;
-    private String Nombre_producto;
-    private double Precio;
-    private String Descripcion;
-    private String ImagenUrl;
-    private int Cantidad;
+    private int productoId;
+    private String nombre_producto;
+    private double precio;
+    private String descripcion;
+    private String imagenUrl;
+    private int cantidad;
     private boolean seleccionado;
 
     public ProductoDTO() {
     }
 
     public int getProductoId() {
-        return ProductoId;
+        return productoId;
     }
 
     public void setProductoId(int productoId) {
-        ProductoId = productoId;
+        this.productoId = productoId;
     }
 
     public String getNombre_producto() {
-        return Nombre_producto;
+        return nombre_producto;
     }
 
     public void setNombre_producto(String nombre_producto) {
-        Nombre_producto = nombre_producto;
+        this.nombre_producto = nombre_producto;
     }
 
     public double getPrecio() {
-        return Precio;
+        return precio;
     }
 
     public void setPrecio(double precio) {
-        Precio = precio;
+        this.precio = precio;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public String getImagenUrl() {
-        return ImagenUrl;
+        return imagenUrl;
     }
 
     public void setImagenUrl(String imagenUrl) {
-        ImagenUrl = imagenUrl;
+        this.imagenUrl = imagenUrl;
     }
 
     public int getCantidad() {
-        return Cantidad;
+        return cantidad;
     }
 
     public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
+        this.cantidad = cantidad;
     }
 
     public boolean isSeleccionado() {
@@ -73,12 +73,12 @@ public class ProductoDTO implements Serializable {
     @Override
     public String toString() {
         return "ProductoDTO{" +
-                "ProductoId=" + ProductoId +
-                ", Nombre_producto='" + Nombre_producto + '\'' +
-                ", Precio=" + Precio +
-                ", Descripcion='" + Descripcion + '\'' +
-                ", ImagenUrl='" + ImagenUrl + '\'' +
-                ", Cantidad=" + Cantidad +
+                "productoId=" + productoId +
+                ", nombre_producto='" + nombre_producto + '\'' +
+                ", precio=" + precio +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagenUrl='" + imagenUrl + '\'' +
+                ", cantidad=" + cantidad +
                 ", seleccionado=" + seleccionado +
                 '}';
     }

@@ -37,7 +37,6 @@ public class VistaPreviaAdapter extends RecyclerView.Adapter<VistaPreviaAdapter.
     @Override
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
         Producto producto = productosSeleccionados.get(position);
-        Log.d("salida", "onBindViewHolder: "+producto.toString());
         int cantidad = cantidades.get(position);
         holder.tvNombreProducto.setText(producto.getNombre_producto());
         holder.tvPrecioProducto.setText(String.valueOf(producto.getPrecio()));
