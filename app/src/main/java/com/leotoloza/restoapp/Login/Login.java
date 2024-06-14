@@ -45,6 +45,13 @@ public class Login extends AppCompatActivity {
                 ToastPesonalizado.mostrarMensaje(getApplicationContext(), s);
             }
         });
+        binding.recuperarPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, RecuperarPassActivity.class);
+                startActivity(intent);
+            }
+        });
         Button btnLogin = binding.btnLogin;
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

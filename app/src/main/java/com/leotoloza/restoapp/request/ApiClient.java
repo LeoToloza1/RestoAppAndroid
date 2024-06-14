@@ -107,5 +107,9 @@ public class ApiClient {
         @POST("Envio/crear/{id}")
         Call<Envio> solicitarEnvio(@Path("id") int id);
 
+        @POST("Cliente/recuperarPass")
+        @FormUrlEncoded
+        Call<String> enviarMail(@Field("email") String email);
+
     }
 }

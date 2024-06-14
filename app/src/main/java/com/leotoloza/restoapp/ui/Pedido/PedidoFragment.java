@@ -91,7 +91,6 @@ public class PedidoFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        requireActivity().finish();
         binding = null;
     }
 }
